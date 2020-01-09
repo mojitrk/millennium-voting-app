@@ -1,0 +1,256 @@
+#NEEDS TO WORK FOR MULTIPLE FILES ACROSS MULTIPLE CLIENTS
+#1>> make a shared aggregate file
+#2>> simple_dash
+
+from flask import Flask, render_template, request, url_for, redirect
+from flask import flash
+import csv
+
+#flask_app_declaration
+adminApp = Flask(__name__, static_folder = 'static', template_folder='templates')
+adminApp.config['SECRET_KEY']= 'sdfvbukjfn738uif78g2ne8ivb78er'
+
+#external_file_declarations
+baseFile = 'data/valid_db.csv'
+cacheFile = 'data/cache_db.csv'
+
+@adminApp.route('/')
+def rootDash():
+    return redirect(url_for('simpleDashData'))
+
+@adminApp.route('/simple-post-info')
+def postInfo():
+    with open('vote-files/total_vote_count.csv') as csvR:
+        csvReader=csv.reader(csvR)
+        i=0
+        for row in csvReader:
+            if row==[]: continue
+            i+=1
+            if i==1:
+                SPL_B_0 = 'Sameer'
+                SPL_B_VOTE_0 = row[0]
+                SPL_B_1 = 'Nikhil'
+                SPL_B_VOTE_1 = row[1]
+                SPL_B_2 = 'Yash'
+                SPL_B_VOTE_2 = row[2]
+            if i==2:
+                SPL_G_0 = 'Sanjana'
+                SPL_G_VOTE_0 = row[0]
+                SPL_G_1 = 'Parvani'
+                SPL_G_VOTE_1 = row[1]
+                SPL_G_2 = 'Bhavana'
+                SPL_G_VOTE_2 = row[2]
+            if i==3:
+                CS_B_0 = 'Afzal'
+                CS_B_VOTE_0 = row[0]
+                CS_B_1 = 'Srinidhih'
+                CS_B_VOTE_1 = row[1]
+                CS_B_2 = 'Sai Adhitya'
+                CS_B_VOTE_2 = row[2]
+            if i==4:
+                CS_G_0 = 'Kanimita'
+                CS_G_VOTE_0 = row[0]
+                CS_G_1 = 'Teena'
+                CS_G_VOTE_1 = row[1]
+                CS_G_2 = 'Manasa'
+                CS_G_VOTE_2 = row[2]
+                CS_G_3 = 'Praneetha'
+                CS_G_VOTE_3 = row[3]
+                CS_G_4 = 'Aishwarya'
+                CS_G_VOTE_4 = row[4]
+            if i==5:
+                SS_B_0 = 'Alfred'
+                SS_B_VOTE_0 = row[0]
+                SS_B_1 = 'Akhilesh'
+                SS_B_VOTE_1 = row[1]
+                SS_B_2 = 'Anantha'
+                SS_B_VOTE_2 = row[2]
+            if i==6:
+                SS_G_0 = 'Varshaa'
+                SS_G_VOTE_0 = row[0]
+                SS_G_1 = 'Neha D'
+                SS_G_VOTE_1 = row[1]
+            if i==7:
+                ASPL_B_0 = 'Dheeraj'
+                ASPL_B_VOTE_0 = row[0]
+                ASPL_B_1 = 'Thiru Kathir'
+                ASPL_B_VOTE_1 = row[1]
+                ASPL_B_2 = 'Shanthanu'
+                ASPL_B_VOTE_2 = row[2]
+            #from_here_name_required
+            if i==8:
+                ASPL_G_0 = 'S Riya'
+                ASPL_G_VOTE_0 = row[0]
+                ASPL_G_1 = 'Aparna R'
+                ASPL_G_VOTE_1 = row[1]
+                ASPL_G_2 = 'Harshini Vijayan'
+                ASPL_G_VOTE_2 = row[2]
+                ASPL_G_3 = 'Neha Yuvraj'
+                ASPL_G_VOTE_3 = row[3]
+                ASPL_G_4 = 'Smriti Maheshwari'
+                ASPL_G_VOTE_4 = row[4]
+            if i==9:
+                ACS_B_0 = 'Sankruth Sharma'
+                ACS_B_VOTE_0 = row[0]
+                ACS_B_1 = 'Saathvik B'
+                ACS_B_VOTE_1 = row[1]
+                ACS_B_2 = 'Harikrishnaa'
+                ACS_B_VOTE_2 = row[2]
+            if i==10:
+                ACS_G_0 = 'Srinidhi B'
+                ACS_G_VOTE_0 = row[0]
+                ACS_G_1 = 'Aishwarya Ramachandra'
+                ACS_G_VOTE_1 = row[1]
+                ACS_G_2 = 'Dharshini SS'
+                ACS_G_VOTE_2 = row[2]
+                ACS_G_3 = 'Advika RA'
+                ACS_G_VOTE_3 = row[3]
+            if i==11:
+                ASS_B_0 = 'Hari Shankar VS'
+                ASS_B_VOTE_0 = row[0]
+                ASS_B_1 = 'Balaji Ravi'
+                ASS_B_VOTE_1 = row[1]
+                ASS_B_2 = 'Dheexshan'
+                ASS_B_VOTE_2 = row[2]
+                ASS_B_3 = 'Annirudh RA'
+                ASS_B_VOTE_3 = row[3]
+            if i==12:
+                ASS_G_0 = 'Anika Pandey'
+                ASS_G_VOTE_0 = row[0]
+                ASS_G_1 = 'Shamita'
+                ASS_G_VOTE_1 = row[1]
+                ASS_G_2 = 'Akshara NK'
+                ASS_G_VOTE_2 = row[2]
+                ASS_G_3 = 'Yuvashree Magesh'
+                ASS_G_VOTE_3 = row[3]
+            if i==13:
+                IC_P_0 = 'Harshita Balaji'
+                IC_P_VOTE_0 = row[0]
+                IC_P_1 = 'Shivani SI'
+                IC_P_VOTE_1 = row[1]
+                IC_P_2 = 'Srirangan S'
+                IC_P_VOTE_2 = row[2]
+            if i==14:
+                IC_VP_0 = 'Nethra'
+                IC_VP_VOTE_0 = row[0]
+                IC_VP_1 = 'Tarun'
+                IC_VP_VOTE_1 = row[1]
+            if i==15:
+                IC_S_0 = 'Sibi Rassal'
+                IC_S_VOTE_0 = row[0]
+                IC_S_1 = 'Pranav S'
+                IC_S_VOTE_1 = row[1]
+            if i==16:
+                IC_T_0 = 'Bharat Rajesh'
+                IC_T_VOTE_0 = row[0]
+                IC_T_1 = 'S Vishal'
+                IC_T_VOTE_1 = row[1]
+    return render_template('admin/simple_post_info.html', SPL_B_0=SPL_B_0, SPL_B_VOTE_0=SPL_B_VOTE_0,
+                                                          SPL_B_1=SPL_B_1, SPL_B_VOTE_1=SPL_B_VOTE_1,
+                                                          SPL_B_2=SPL_B_2, SPL_B_VOTE_2=SPL_B_VOTE_2,
+
+                                                          SPL_G_0=SPL_G_0, SPL_G_VOTE_0=SPL_G_VOTE_0,
+                                                          SPL_G_1=SPL_G_1, SPL_G_VOTE_1=SPL_G_VOTE_1,
+                                                          SPL_G_2=SPL_G_2, SPL_G_VOTE_2=SPL_G_VOTE_2,
+
+                                                          ASPL_B_0=ASPL_B_0, ASPL_B_VOTE_0=ASPL_B_VOTE_0,
+                                                          ASPL_B_1=ASPL_B_1, ASPL_B_VOTE_1=ASPL_B_VOTE_1,
+                                                          ASPL_B_2=ASPL_B_2, ASPL_B_VOTE_2=ASPL_B_VOTE_2,
+
+                                                          ASPL_G_0=ASPL_G_0, ASPL_G_VOTE_0=ASPL_G_VOTE_0,
+                                                          ASPL_G_1=ASPL_G_1, ASPL_G_VOTE_1=ASPL_G_VOTE_1,
+                                                          ASPL_G_2=ASPL_G_2, ASPL_G_VOTE_2=ASPL_G_VOTE_2,
+                                                          ASPL_G_3=ASPL_G_3, ASPL_G_VOTE_3=ASPL_G_VOTE_3,
+                                                          ASPL_G_4=ASPL_G_4, ASPL_G_VOTE_4=ASPL_G_VOTE_4,
+
+                                                          CS_B_0=CS_B_0, CS_B_VOTE_0=CS_B_VOTE_0,
+                                                          CS_B_1=CS_B_1, CS_B_VOTE_1=CS_B_VOTE_1,
+                                                          CS_B_2=CS_B_2, CS_B_VOTE_2=CS_B_VOTE_2,
+
+                                                          CS_G_0=CS_G_0, CS_G_VOTE_0=CS_G_VOTE_0,
+                                                          CS_G_1=CS_G_1, CS_G_VOTE_1=CS_G_VOTE_1,
+                                                          CS_G_2=CS_G_2, CS_G_VOTE_2=CS_G_VOTE_2,
+                                                          CS_G_3=CS_G_3, CS_G_VOTE_3=CS_G_VOTE_3,
+                                                          CS_G_4=CS_G_4, CS_G_VOTE_4=CS_G_VOTE_4,
+
+                                                          ACS_B_0=ACS_B_0, ACS_B_VOTE_0=ACS_B_VOTE_0,
+                                                          ACS_B_1=ACS_B_1, ACS_B_VOTE_1=ACS_B_VOTE_1,
+                                                          ACS_B_2=ACS_B_2, ACS_B_VOTE_2=ACS_B_VOTE_2,
+
+                                                          ACS_G_0=ACS_G_0, ACS_G_VOTE_0=ACS_G_VOTE_0,
+                                                          ACS_G_1=ACS_G_1, ACS_G_VOTE_1=ACS_G_VOTE_1,
+                                                          ACS_G_2=ACS_G_2, ACS_G_VOTE_2=ACS_G_VOTE_2,
+                                                          ACS_G_3=ACS_G_3, ACS_G_VOTE_3=ACS_G_VOTE_3,
+
+                                                          SS_B_0=SS_B_0, SS_B_VOTE_0=SS_B_VOTE_0,
+                                                          SS_B_1=SS_B_1, SS_B_VOTE_1=SS_B_VOTE_1,
+                                                          SS_B_2=SS_B_2, SS_B_VOTE_2=SS_B_VOTE_2,
+
+                                                          SS_G_0=SS_G_0, SS_G_VOTE_0=SS_G_VOTE_0,
+                                                          SS_G_1=SS_G_1, SS_G_VOTE_1=SS_G_VOTE_1,
+
+                                                          ASS_B_0=ASS_B_0, ASS_B_VOTE_0=ASS_B_VOTE_0,
+                                                          ASS_B_1=ASS_B_1, ASS_B_VOTE_1=ASS_B_VOTE_1,
+                                                          ASS_B_2=ASS_B_2, ASS_B_VOTE_2=ASS_B_VOTE_2,
+                                                          ASS_B_3=ASS_B_3, ASS_B_VOTE_3=ASS_B_VOTE_3,
+
+                                                          ASS_G_0=ASS_G_0, ASS_G_VOTE_0=ASS_G_VOTE_0,
+                                                          ASS_G_1=ASS_G_1, ASS_G_VOTE_1=ASS_G_VOTE_1,
+                                                          ASS_G_2=ASS_G_2, ASS_G_VOTE_2=ASS_G_VOTE_2,
+                                                          ASS_G_3=ASS_G_3, ASS_G_VOTE_3=ASS_G_VOTE_3,
+
+                                                          IC_P_0=IC_P_0, IC_P_VOTE_0=IC_P_VOTE_0,
+                                                          IC_P_1=IC_P_1, IC_P_VOTE_1=IC_P_VOTE_1,
+                                                          IC_P_2=IC_P_2, IC_P_VOTE_2=IC_P_VOTE_2,
+
+                                                          IC_S_0=IC_S_0, IC_S_VOTE_0=IC_S_VOTE_0,
+                                                          IC_S_1=IC_S_1, IC_S_VOTE_1=IC_S_VOTE_1,
+
+                                                          IC_VP_0=IC_VP_0, IC_VP_VOTE_0=IC_VP_VOTE_0,
+                                                          IC_VP_1=IC_VP_1, IC_VP_VOTE_1=IC_VP_VOTE_1,
+
+                                                          IC_T_0=IC_T_0, IC_T_VOTE_0=IC_T_VOTE_0,
+                                                          IC_T_1=IC_T_1, IC_T_VOTE_1=IC_T_VOTE_1)
+
+
+@adminApp.route('/simple-dash', methods=['POST', 'GET'])
+def simpleDash():
+    return render_template('admin/simple_dash.html')
+
+@adminApp.route('/simple-dash-data', methods=['POST', 'GET'])
+def simpleDashData():
+    #code
+    with open('../data/voteagg_db.csv') as csvR:
+        csvReader=csv.reader(csvR)
+        i = 0
+        for row in csvReader:
+            if row==[]: continue
+            i+=1
+            high = max(row)
+            ind = row.index(high)
+            if i == 1:
+                post = "SPL_B"
+                SPL_B_VOTE = high
+                if ind == 0: SPL_B = "nikhil"
+                if ind == 1: SPL_B = "sameer"
+                if ind == 2: SPL_B = "yash"
+            elif i == 2: post = "SPL_G"
+            elif i == 3: post = "CS_B"
+            elif i == 4: post = "CS_G"
+            elif i == 5: post = "SS_B"
+            elif i == 6: post = "SS_G"
+            elif i == 7: post = "ASPL_B"
+            elif i == 8: post = "ASPL_G"
+            elif i == 9: post = "ACS_B"
+            elif i == 10: post = "ACS_G"
+            elif i == 11: post = "ASS_B"
+            elif i == 12: post = "ASS_G"
+            elif i == 13: post = "IN_PRES"
+            elif i == 14: post = "IN_VPRES"
+            elif i == 15: post = "IN_SEC"
+            elif i == 16: post = "IN_TRES"
+    return render_template('admin/simple_dash.html', SPL_B=SPL_B, SPL_B_VOTE=SPL_B_VOTE)
+
+#app_init
+if __name__ == '__main__':
+    adminApp.run(host='0.0.0.0' , port=2427, debug=True)

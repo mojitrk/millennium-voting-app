@@ -1,0 +1,52 @@
+{% extends 'layout_poll.html' %}
+{% block content %}
+<div class = "container-fluid">
+<div class = "flash_msg alert alert-primary" role="alert">
+    {%  with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class =flashes>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+<div class = "container">
+    <div class="row mx-auto pb-5 d-block">
+    <h1 class="text-center text-black" style="font-family: Times New Roman, Times, serif"><B>STUDENT BODY COUNCIL ELECTION: 2019-20</B></h1>
+    </div>
+</div>
+<div class = "container">
+    <h1 class="text-center text-black" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><B>School Pupil Leader (Girls)</B></h1>
+</div>
+ <div class = "formstl ">
+    <form method = "POST"  id = "formid"  name = "2ndform" class = "jumbotron ">
+        <div class ="row mx-auto ">
+    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name1"  class = "btn btn-primary btn-lg" id ="name1" onclick="temp(this);"><label for="name1">M Sanjana</label><img class="rounded mx-auto d-block" src="static/img/Candidate/sanj.jpg" alt="blue" height="200" width="200"></button></div>
+    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name2"  class = "btn btn-primary btn-lg" id ="name2" onclick="temp(this);"><label for="name2">MP Parvani</label><img class ="rounded mx-auto d-block" src="static/img/Candidate/par.jpg" alt="blue" height="200" width="200"></button></div>
+    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name3"  class = "btn btn-primary btn-lg" id ="name3" onclick="temp(this);"><label for="name3">S Bhavana</label><img class ="rounded mx-auto d-block"src="static/img/Candidate/bav.jpg" alt="blue" height="200" width="200"></button></div>
+        </div>
+    </form>
+ </div>
+
+    <div class="row"><p id ="msg"></p></div>
+    <script>
+        function temp(val){
+                var id = val.id
+                document.getElementById("msg").innerHTML = id;
+                // console.log(id);
+                var con = confirm("Do you wish to select " + val.id);
+                        if (con== true){
+                            document.getElementById(id).value = id
+                            console.log(val.value);
+
+                            document.getElementById("formid").action = "/cs-b";
+                        }
+                        else{
+                            document.getElementById("formid").action = "/spl-g";
+                        }
+            }
+    </script>
+</div>
+{% endblock content %}

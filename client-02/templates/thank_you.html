@@ -1,0 +1,30 @@
+{% extends "layout_poll.html" %}
+{% block content %}
+<div class = "flash_msg">
+    {%  with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class =flashes>
+    {% for message in messages %}
+        <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+
+ <div class= "endpg text-center">
+     THANK YOU!!
+ </div>
+ <div class = "pgnext text-center">
+     <form name = "lastpg" method ="GET" id = "thankyou" class="jumbotron">
+     <button name="newperson" value="nxt" class = "btn btn-primary btn-lg" id ="endpg" onclick = "endfunc(this);">NEXT</button>
+     </form>
+</div>
+
+<script>
+    function endfunc(clic){
+        document.getElementById("thankyou").action="/"
+    }
+</script>
+
+{% endblock %}
