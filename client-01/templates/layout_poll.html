@@ -5,38 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
-   	<!--Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
-<!-- <style>
-    body {
-      background-image: url('static/img/gbkm-school.jpg');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      border-color: red green blue yellow;
-    }
-    </style>-->
-    <style>
-    body{
+
+<style>
+    .jumbo {
     background-image: url('../static/img/resin_bg.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-}
-    </style>
-    <style>
-        .jumbotron{
-        	/* background-image: url('../static/img/resin_bg.png');
-        	background-size: cover;
-        	background-repeat: no-repeat; */
-            background: none;
-        }
-    </style>
+    }
+</style>
+
+<style>
+    .jumbotron{
+        background: none;
+    }
+</style>
+
 <body >
-
-    <div id = "formchg">
-    {% block content %}{% endblock %}
+    <div class='jumbo'>
+        <div id = "formchg">
+            {% block content %}{% endblock %}
+        </div>
     </div>
-
 </body>
 </html>

@@ -281,4 +281,4 @@ def thank():
 
 #app_init
 if __name__ == '__main__':
-    baseApp.run(host='192.168.5.1' , port=2000, debug=True)
+    baseApp.run(host='0.0.0.0' , port=5000, debug=True)
