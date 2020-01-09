@@ -33,7 +33,6 @@ def rootForm():
 #poll_page
 @baseApp.route('/spl-b', methods = ['POST','GET'])
 def spl_b():
-    flash('Start Voting!')
     return render_template('poll-pages/spl_b.html',title = 'spl_b')
 
 #poll_page
