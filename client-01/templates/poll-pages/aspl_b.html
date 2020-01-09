@@ -1,3 +1,5 @@
+
+
 {% extends 'layout_poll.html' %}
 {% block content %}
 <div class = "container-fluid">
@@ -19,12 +21,11 @@
     </div>
 </div>
  <div class = "formstl ">
-    <form method = "POST"  id = "formid"  name = "7thform" class = "jumbotron ">
+    <form method = "POST"  id = "formid"  name = "8thform" class = "jumbotron">
         <div class ="row mx-auto ">
-    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name1"  class = "btn btn-primary btn-lg" id ="Dheeraj" onclick="temp(this);"><label for="name1">Dheeraj</label><img class="rounded mx-auto d-block" src="static/img/Candidate/dhee.jpg" alt="blue" height="200" width="200"></button></div>
-    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name2"  class = "btn btn-primary btn-lg" id ="Thirukathir" onclick="temp(this);"><label for="name2">Thirukathir</label><img class ="rounded mx-auto d-block" src="static/img/Candidate/thi.jpg" alt="blue" height="200" width="200"></button></div>
-    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name3"  class = "btn btn-primary btn-lg" id ="Shantanu R" onclick="temp(this);"><label for="name3">Shantanu R</label><img class ="rounded mx-auto d-block"src="static/img/Candidate/shan.jpg" alt="blue" height="200" width="200"></button></div>
-        </div>
+    <div class="col-xl-4 mx-auto  mt-4 py-5 d-block"><button name="name1"  class = "btn btn-primary btn-lg" id ="S Riya" onclick="temp(this);"><label for="name1">Dheeraj</label><img class="rounded mx-auto d-block" src="static/img/Candidate/dhee.jpg" alt="blue" height="200" width="200"></button></div>
+    <div class="col-xl-4 mx-auto  mt-4 py-5 d-block"><button name="name2"  class = "btn btn-primary btn-lg" id ="Aparna R" onclick="temp(this);"><label for="name2">Thirukathir</label><img class ="rounded mx-auto d-block" src="static/img/Candidate/thi.jpg" alt="blue" height="200" width="200"></button></div>
+    <div class="col-xl-4 mx-auto  mt-4 py-5 d-block"><button name="name3"  class = "btn btn-primary btn-lg" id ="Hashini Vijayan" onclick="temp(this);"><label for="name3">Shantanu R</label><img class ="rounded mx-auto d-block"src="static/img/Candidate/shan.jpg" alt="blue" height="200" width="200"></button></div>
     </form>
  </div>
 
@@ -33,7 +34,6 @@
         function temp(val){
                 var id = val.id
                 document.getElementById("msg").innerHTML = id;
-                }
                 // console.log(id);
                 var con = confirm("Do you wish to select " + val.id);
                         if (con== true){
