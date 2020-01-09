@@ -35,16 +35,16 @@
                 var id = val.id
                 document.getElementById("msg").innerHTML = id;
                 // console.log(id);
-                var con = confirm("Do you wish to select " + val.id);
+                var con = confirm("You have selected " + val.id);
                         if (con== true){
                             document.getElementById(id).value = id
                             console.log(val.value);
 
                             document.getElementById("formid").action = "/acs-g";
                         }
-                        else{
-                            ocument.getElementById("formid").action = "/acs-b";
-                        }
+                         else{
+                             document.getElementById("formid").action = "/acs-b";
+                         }
             }
     </script>
 </div>

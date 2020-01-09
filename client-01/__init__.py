@@ -147,6 +147,7 @@ def ass_g():
         if 'name1' in request.form: getPollVal='1'
         if 'name2' in request.form: getPollVal='2'
         if 'name3' in request.form: getPollVal='3'
+        if 'name4' in request.form: getPollVal='4'
         csvWriter(getPollVal, dataFile)
     return render_template('poll-pages/ass_g.html', title = 'ass_g')
 
@@ -281,4 +282,4 @@ def thank():
 
 #app_init
 if __name__ == '__main__':
-    baseApp.run(host='0.0.0.0' , port=5000, debug=True)
+    baseApp.run(host='0.0.0.0' , port=4000, debug=True)
