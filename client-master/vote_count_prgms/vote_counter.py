@@ -13,26 +13,26 @@ vote_counter_client2.voteCount()
 vote_counter_client3.voteCount()
 vote_counter_client4.voteCount()
 vote_counter_client5.voteCount()
-print ("vote count works")
+print ("vote count works")	
 
 from operator import add
 import csv
 
-dataFile='../vote-files/total_vote_count.csv'
+dataFile='total_vote_count.csv'
 def csvWriter(data, filename):
     with open(filename, 'a') as csvfileW:
         writerObject=csv.writer(csvfileW)
         writerObject.writerow(data)
 
 all_votes=[]
-with open('../client-01/data/voteagg_db.csv', 'r') as csvfileR:
+with open('../../client-01/data/voteagg_db.csv', 'r') as csvfileR:
 	readerObject=csv.reader(csvfileR)
 	for row in readerObject:
 		if row==[]: continue
 		else:
 			all_votes.append(list(map(int, row)))
 
-print (all_votes)
+#print (all_votes)
 def voteCountOthers(filename):
 	with open(filename, 'r') as csvfileR:
 		readerObject=csv.reader(csvfileR)
@@ -44,11 +44,11 @@ def voteCountOthers(filename):
 				#print (all_votes[i], row)
 				all_votes[i]=list(map(add, all_votes[i], list(map(int,row))))
 
-print ("next func works")
-voteCountOthers('../client-02/data/voteagg_db.csv')
-voteCountOthers('../client-03/data/voteagg_db.csv')
-voteCountOthers('../client-04/data/voteagg_db.csv')
-voteCountOthers('../client-05/data/voteagg_db.csv')
+#print ("next func works")
+voteCountOthers('../../client-02/data/voteagg_db.csv')
+voteCountOthers('../../client-03/data/voteagg_db.csv')
+voteCountOthers('../../client-04/data/voteagg_db.csv')
+voteCountOthers('../../client-05/data/voteagg_db.csv')
 
 for post in all_votes:
 	if post==[]: continue

@@ -20,7 +20,7 @@ def rootDash():
 
 @adminApp.route('/simple-post-info')
 def postInfo():
-    with open('vote-files/total_vote_count.csv') as csvR:
+    with open('vote_count_prgms/total_vote_count.csv') as csvR:
         csvReader=csv.reader(csvR)
         i=0
         for row in csvReader:
@@ -220,7 +220,7 @@ def simpleDash():
 @adminApp.route('/simple-dash-data', methods=['POST', 'GET'])
 def simpleDashData():
     #code
-    with open('../data/voteagg_db.csv') as csvR:
+    with open('vote_count_prgms/total_vote_count.csv') as csvR:
         csvReader=csv.reader(csvR)
         i = 0
         for row in csvReader:
@@ -231,17 +231,56 @@ def simpleDashData():
             if i == 1:
                 post = "SPL_B"
                 SPL_B_VOTE = high
-                if ind == 0: SPL_B = "nikhil"
-                if ind == 1: SPL_B = "sameer"
-                if ind == 2: SPL_B = "yash"
-            elif i == 2: post = "SPL_G"
-            elif i == 3: post = "CS_B"
-            elif i == 4: post = "CS_G"
-            elif i == 5: post = "SS_B"
-            elif i == 6: post = "SS_G"
-            elif i == 7: post = "ASPL_B"
-            elif i == 8: post = "ASPL_G"
-            elif i == 9: post = "ACS_B"
+                if ind == 0: SPL_B = "Sameer"
+                if ind == 1: SPL_B = "Nikhil"
+                if ind == 2: SPL_B = "Yash"
+            elif i == 2: 
+                post = "SPL_G"
+                SPL_G_VOTE = high
+                if ind == 0: SPL_G = "Sanjana"
+                if ind == 1: SPL_G = "Parvani"
+                if ind == 2: SPL_G = "Bhavana"
+            elif i == 3: 
+                post = "CS_B"
+                CS_B_VOTE = high
+                if ind == 0: CS_B = "Afzal"
+                if ind == 1: CS_B = "Srinidhih"
+                if ind == 2: CS_B = "Sai Adhitya"
+            elif i == 4: 
+                post = "CS_G"
+                CS_G_VOTE = high
+                if ind == 0: CS_G = "Kanimita"
+                if ind == 1: CS_G = "Teena"
+                if ind == 2: CS_G = "Manasa"
+                if ind == 3: CS_G = "Praneetha"
+                if ind == 4: CS_G = "Aishwarya"
+            elif i == 5: 
+                post = "SS_B"
+                SS_B_VOTE = high
+                if ind == 0: SS_B = "Alfred"
+                if ind == 1: SS_B = "Akhilesh"
+                if ind == 2: SS_B = "Anantha"
+            elif i == 6: 
+                post = "SS_G"
+                SS_G_VOTE = high
+                if ind == 0: SS_G = "Varshaa"
+                if ind == 1: SS_G = "Neha"
+            elif i == 7: 
+                post = "ASPL_B"
+                ASPL_B_VOTE = high
+                if ind == 0: ASPL_B = "Dheeraj"
+                if ind == 1: ASPL_B = "Thiru Kathir"
+                if ind == 2: ASPL_B = "Shanthanu"
+            elif i == 8: 
+                post = "ASPL_G"
+                SPL_G_VOTE = high
+                if ind == 0: ASPL_G = "S Riya"
+                if ind == 1: ASPL_G = "Aparna R"
+                if ind == 2: ASPL_G = "Harshini Vijayan"
+                if ind == 3: ASPL_G = "Neha Yuvaraj"
+                if ind == 4: ASPL_G = "Smriti Maheshwari"
+            elif i == 9: 
+                post = "ACS_B"
             elif i == 10: post = "ACS_G"
             elif i == 11: post = "ASS_B"
             elif i == 12: post = "ASS_G"
