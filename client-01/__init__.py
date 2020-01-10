@@ -11,6 +11,7 @@ baseFile = 'data/valid_db.csv'
 cacheFile = 'data/cache_db.csv'
 dataFile = 'data/data_cache.csv'
 forfeitFile = 'data/forfeit_db.csv'
+sharedCacheFile = '../client-master/db/cacheAgg_db.csv'
 
 global getPollVal
 
@@ -205,7 +206,7 @@ def login():
         f=open('data/usn_cache.txt','w')
         f.write(getKey)
         f.close()
-        with open(cacheFile) as csvfileR:
+        with open(sharedCacheFile) as csvfileR:
             readCSV = csv.reader(csvfileR, delimiter=',')
             cacheUSN = []
             for row in readCSV:
