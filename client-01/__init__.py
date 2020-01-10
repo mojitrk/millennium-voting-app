@@ -7,7 +7,7 @@ baseApp = Flask(__name__, static_folder = 'static', template_folder='templates')
 baseApp.config['SECRET_KEY']= 'sdfvbukjfn738uif78g2ne8ivb78er'
 
 #external_file_declarations
-baseFile = 'data/valid_db.csv'
+baseFile = '../client-master/db/valid_db.csv'
 cacheFile = 'data/cache_db.csv'
 dataFile = 'data/data_cache.csv'
 forfeitFile = 'data/forfeit_db.csv'
@@ -196,7 +196,7 @@ def login():
     if request.method == 'POST':
         getKey = request.form['pwd']
         #staff_vote
-        if getKey == 'passwd':
+        if getKey == 'passteach':
             f = open(dataFile, 'w')
             f.truncate()
             f.close()
@@ -282,4 +282,4 @@ def thank():
 
 #app_init
 if __name__ == '__main__':
-    baseApp.run(host='0.0.0.0' , port=4000, debug=True)
+    baseApp.run(host='192.168.5.1' , port=6001, debug=True)

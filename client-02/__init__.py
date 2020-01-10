@@ -7,10 +7,11 @@ baseApp = Flask(__name__, static_folder = 'static', template_folder='templates')
 baseApp.config['SECRET_KEY']= 'sdfvbukjfn738uif78g2ne8ivb78er'
 
 #external_file_declarations
-baseFile = 'data/valid_db.csv'
+baseFile = '../client-master/db/valid_db.csv'
 cacheFile = 'data/cache_db.csv'
 dataFile = 'data/data_cache.csv'
 forfeitFile = 'data/forfeit_db.csv'
+sharedCacheFile = '../client-master/db/cacheAgg_db.csv'
 
 global getPollVal
 
@@ -33,61 +34,37 @@ def rootForm():
 #poll_page
 @baseApp.route('/spl-b', methods = ['POST','GET'])
 def spl_b():
-    flash('Start Voting!')
     return render_template('poll-pages/spl_b.html',title = 'spl_b')
-
-@baseApp.route('/spl-b', methods = ['POST','GET'])
-def spl_b_data():
-    if request.method == 'POST':
-        if 'name1' in request.form['initialform']: getPollVal='1'
-        if 'name2' in request.form['initialform']: getPollVal='2'
-        if 'name3' in request.form['initialform']: getPollVal='3'
-        csvWriter(getPollVal, dataFile)
-        return redirect(url_for('spl_g'))
 
 #poll_page
 @baseApp.route('/spl-g', methods = ['POST','GET'])
 def spl_g():
-    return render_template('poll-pages/spl_g.html', title = 'spl_g')
-
-@baseApp.route('/spl-g-data', methods = ['POST','GET'])
-def spl_g_data():
     if request.method == 'POST':
         if 'name1' in request.form: getPollVal='1'
         if 'name2' in request.form: getPollVal='2'
         if 'name3' in request.form: getPollVal='3'
         csvWriter(getPollVal, dataFile)
-        return redirect(url_for('cs_b'))
+    return render_template('poll-pages/spl_g.html', title = 'spl_g')
 
 #poll_page
 @baseApp.route('/cs-b',methods=['POST','GET'])
 def cs_b():
-    return render_template('poll-pages/cs_b.html', title='cs_b')
-
-@baseApp.route('/cs-b-data',methods=['POST','GET'])
-def cs_b_data():
     if request.method == 'POST':
         if 'name1' in request.form: getPollVal='1'
         if 'name2' in request.form: getPollVal='2'
         if 'name3' in request.form: getPollVal='3'
         csvWriter(getPollVal, dataFile)
-        return redirect(url_for('cs_g'))
+    return render_template('poll-pages/cs_b.html', title = 'cs_b')
 
 #poll_page
 @baseApp.route('/cs-g',methods=['POST','GET'])
 def cs_g():
-    return render_template('poll-pages/cs_g.html', title='cs_g')
-
-@baseApp.route('/cs-g-data',methods=['POST','GET'])
-def cs_g_data():
     if request.method == 'POST':
         if 'name1' in request.form: getPollVal='1'
         if 'name2' in request.form: getPollVal='2'
         if 'name3' in request.form: getPollVal='3'
-        if 'name4' in request.form: getPollVal='4'
-        if 'name5' in request.form: getPollVal='5'
         csvWriter(getPollVal, dataFile)
-        return redirect(url_for('ss_b'))
+    return render_template('poll-pages/cs_g.html', title = 'cs_g')
 
 #poll_page
 @baseApp.route('/ss-b',methods=['POST','GET'])
@@ -170,6 +147,7 @@ def ass_g():
         if 'name1' in request.form: getPollVal='1'
         if 'name2' in request.form: getPollVal='2'
         if 'name3' in request.form: getPollVal='3'
+        if 'name4' in request.form: getPollVal='4'
         csvWriter(getPollVal, dataFile)
     return render_template('poll-pages/ass_g.html', title = 'ass_g')
 
@@ -218,7 +196,7 @@ def login():
     if request.method == 'POST':
         getKey = request.form['pwd']
         #staff_vote
-        if getKey == 'passwd':
+        if getKey == 'passteach':
             f = open(dataFile, 'w')
             f.truncate()
             f.close()
@@ -228,7 +206,7 @@ def login():
         f=open('data/usn_cache.txt','w')
         f.write(getKey)
         f.close()
-        with open(cacheFile) as csvfileR:
+        with open(sharedCacheFile) as csvfileR:
             readCSV = csv.reader(csvfileR, delimiter=',')
             cacheUSN = []
             for row in readCSV:
@@ -304,4 +282,4 @@ def thank():
 
 #app_init
 if __name__ == '__main__':
-    baseApp.run(host='0.0.0.0' , port=2000, debug=True)
+    baseApp.run(host='192.168.5.1' , port=7000, debug=True)

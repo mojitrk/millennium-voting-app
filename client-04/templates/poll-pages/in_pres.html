@@ -13,19 +13,17 @@
     {% endwith %}
 </div>
 <div class = "container">
-    <div class="row mx-auto pb-5 d-block">
-    <h1 class="text-center text-black" style="font-family: Times New Roman, Times, serif"><B>STUDENT BODY COUNCIL ELECTION: 2020-21</B></h1>
+    <div class="row mx-auto pt-5 d-block">
+    <h1 class="text-center text-black" style="font-family: Tahoma"> STUDENT BODY COUNCIL ELECTION: 2019-20 </h1>
+    <h1 class="text-center text-black" style="font-family: Tahoma"> Interact Club President </h1>
     </div>
-</div>
-<div class = "container">
-    <h1 class="text-center text-black" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><B>Interact Club President</B></h1>
 </div>
  <div class = "formstl ">
     <form method = "POST"  id = "formid"  name = "13thform" class = "jumbotron ">
-        <div class ="row mx-auto ">
-    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name1"  class = "btn btn-primary btn-lg" id ="name1" onclick="temp(this);"><label for="name1">Harshita Balaji</label><img class="rounded mx-auto d-block" src="static/img/Candidate/har.jpg" alt="blue" height="200" width="200"></button></div>
-    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name2"  class = "btn btn-primary btn-lg" id ="name2" onclick="temp(this);"><label for="name2">Shivani SI</label><img class ="rounded mx-auto d-block" src="static/img/Candidate/shiv.jpg" alt="blue" height="200" width="200"></button></div>
-    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name3"  class = "btn btn-primary btn-lg" id ="name3" onclick="temp(this);"><label for="name3">Srirangan S</label><img class ="rounded mx-auto d-block"src="static/img/Candidate/sri r.jpg" alt="blue" height="200" width="200"></button></div>
+        <div class ="row mx-auto pl-5 ">
+    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name1"  class = "btn btn-primary btn-lg" id ="Harshita Balaji" onclick="temp(this);"><label for="name1">Harshita Balaji</label><img class="rounded mx-auto d-block" src="static/img/Candidate/har.jpg" alt="blue"  height="250" width="200"></button></div>
+    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name2"  class = "btn btn-primary btn-lg" id ="Shivani SI" onclick="temp(this);"><label for="name2">Shivani SI</label><img class ="rounded mx-auto d-block" src="static/img/Candidate/shiv.jpg" alt="blue"  height="250" width="200"></button></div>
+    <div class="col-xl-3 mx-auto  mt-4 py-5 d-block"><button name="name3"  class = "btn btn-primary btn-lg" id ="Srirangan S" onclick="temp(this);"><label for="name3">Srirangan S</label><img class ="rounded mx-auto d-block"src="static/img/Candidate/sri r.jpg" alt="blue"  height="250" width="200"></button></div>
         </div>
     </form>
  </div>
@@ -33,20 +31,16 @@
     <div class="row"><p id ="msg"></p></div>
     <script>
         function temp(val){
-                var id = val.id
-                document.getElementById("msg").innerHTML = id;
-                // console.log(id);
-                var con = confirm("Do you wish to select " + val.id);
-                        if (con== true){
-                            document.getElementById(id).value = id
-                            console.log(val.value);
-
-                            document.getElementById("formid").action = "/in-vpres";
-                        }
-                        else{
-                            document.getElementById("formid").action = "/in-pres";
-                        }
-            }
+            var id = val.id
+            document.getElementById("msg").innerHTML = id;
+            var con = alert('You have selected ' + val.id);
+                    if (con == true){
+                        document.getElementById('formid').action = "/in-vpres"
+                    }
+                    else {
+                        document.getElementById('formid').action = "/in-vpres"
+                    }
+        }
     </script>
 </div>
 {% endblock content %}

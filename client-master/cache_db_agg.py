@@ -7,6 +7,9 @@ c_2_file = '../client-02/data/cache_db.csv'
 c_3_file = '../client-03/data/cache_db.csv'
 c_4_file = '../client-04/data/cache_db.csv'
 c_5_file = '../client-05/data/cache_db.csv'
+c_6_file = '../client-06/data/cache_db.csv'
+c_7_file = '../client-07/data/cache_db.csv'
+
 
 while True:
     f = open(workFile, 'w')
@@ -31,5 +34,7 @@ while True:
     csvFileReader(c_3_file)
     csvFileReader(c_4_file)
     csvFileReader(c_5_file)
+    csvFileReader(c_6_file)
+    csvFileReader(c_7_file)
 
     time.sleep(5)

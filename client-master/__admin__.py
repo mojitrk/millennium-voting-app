@@ -350,4 +350,4 @@ def simpleDashData():
 
 #app_init
 if __name__ == '__main__':
-    adminApp.run(host='0.0.0.0' , port=2427, debug=True)
+    adminApp.run(host='192.168.5.1' , port=2427, debug=True)

@@ -8,7 +8,7 @@ while True:
     sys.path.append('~/Documents/deployment-base/client-04/utility/')
     sys.path.append('~/Documents/deployment-base/client-05/utility/')'''
 
-    import vote_counter_client1, vote_counter_client2, vote_counter_client3, vote_counter_client4, vote_counter_client5
+    import vote_counter_client1, vote_counter_client2, vote_counter_client3, vote_counter_client4, vote_counter_client5, vote_counter_client6, vote_counter_client7
 
     f = open('total_vote_count.csv', 'w')
     f.truncate()
@@ -19,6 +19,9 @@ while True:
     vote_counter_client3.voteCount()
     vote_counter_client4.voteCount()
     vote_counter_client5.voteCount()
+    vote_counter_client6.voteCount()
+    vote_counter_client7.voteCount()
+
     print ("vote count works")
 
     from operator import add
@@ -55,7 +58,9 @@ while True:
     voteCountOthers('../../client-03/data/voteagg_db.csv')
     voteCountOthers('../../client-04/data/voteagg_db.csv')
     voteCountOthers('../../client-05/data/voteagg_db.csv')
-
+    voteCountOthers('../../client-06/data/voteagg_db.csv')
+    voteCountOthers('../../client-07/data/voteagg_db.csv')
+    
     for post in all_votes:
     	if post==[]: continue
     	else:
