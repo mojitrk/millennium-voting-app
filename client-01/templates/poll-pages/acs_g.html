@@ -31,7 +31,7 @@
  </div>
 
     <div class="row"><p id ="msg"></p></div>
-    <script>
+    <!-- <script>
         function temp(val){
                 var id = val.id
                 document.getElementById("msg").innerHTML = id;
@@ -47,6 +47,19 @@
                             ocument.getElementById("formid").action = "/acs-g";
                         }
             }
+    </script> -->
+    <script>
+        function temp(val){
+            var id = val.id
+            document.getElementById("msg").innerHTML = id;
+            var con = alert('You have selected ' + val.id);
+                    if (con == true){
+                        document.getElementById('formid').action = "/ass-b"
+                    }
+                    else {
+                        document.getElementById('formid').action = "/ass-b"
+                    }
+        }
     </script>
 </div>
 {% endblock content %}

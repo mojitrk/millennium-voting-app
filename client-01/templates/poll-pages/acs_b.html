@@ -32,20 +32,16 @@
     <div class="row"><p id ="msg"></p></div>
     <script>
         function temp(val){
-                var id = val.id
-                document.getElementById("msg").innerHTML = id;
-                // console.log(id);
-                var con = confirm("You have selected " + val.id);
-                        if (con== true){
-                            document.getElementById(id).value = id
-                            console.log(val.value);
-
-                            document.getElementById("formid").action = "/acs-g";
-                        }
-                         else{
-                             document.getElementById("formid").action = "/acs-b";
-                         }
-            }
+            var id = val.id
+            document.getElementById("msg").innerHTML = id;
+            var con = alert('You have selected ' + val.id);
+                    if (con == true){
+                        document.getElementById('formid').action = "/acs-g"
+                    }
+                    else {
+                        document.getElementById('formid').action = "/acs-g"
+                    }
+        }
     </script>
 </div>
 

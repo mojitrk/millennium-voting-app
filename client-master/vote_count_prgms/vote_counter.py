@@ -1,56 +1,64 @@
-import sys
-'''
-sys.path.append('~/Documents/deployment-base/client-01/utility/')
-sys.path.append('~/Documents/deployment-base/client-02/utility/')
-sys.path.append('~/Documents/deployment-base/client-03/utility/')
-sys.path.append('~/Documents/deployment-base/client-04/utility/')
-sys.path.append('~/Documents/deployment-base/client-05/utility/')'''
+while True:
+    import sys
+    import time
+    '''
+    sys.path.append('~/Documents/deployment-base/client-01/utility/')
+    sys.path.append('~/Documents/deployment-base/client-02/utility/')
+    sys.path.append('~/Documents/deployment-base/client-03/utility/')
+    sys.path.append('~/Documents/deployment-base/client-04/utility/')
+    sys.path.append('~/Documents/deployment-base/client-05/utility/')'''
 
-import vote_counter_client1, vote_counter_client2, vote_counter_client3, vote_counter_client4, vote_counter_client5
+    import vote_counter_client1, vote_counter_client2, vote_counter_client3, vote_counter_client4, vote_counter_client5
 
-vote_counter_client1.voteCount()
-vote_counter_client2.voteCount()
-vote_counter_client3.voteCount()
-vote_counter_client4.voteCount()
-vote_counter_client5.voteCount()
-print ("vote count works")	
+    f = open('total_vote_count.csv', 'w')
+    f.truncate()
+    f.close()
 
-from operator import add
-import csv
+    vote_counter_client1.voteCount()
+    vote_counter_client2.voteCount()
+    vote_counter_client3.voteCount()
+    vote_counter_client4.voteCount()
+    vote_counter_client5.voteCount()
+    print ("vote count works")
 
-dataFile='total_vote_count.csv'
-def csvWriter(data, filename):
-    with open(filename, 'a') as csvfileW:
-        writerObject=csv.writer(csvfileW)
-        writerObject.writerow(data)
+    from operator import add
+    import csv
 
-all_votes=[]
-with open('../../client-01/data/voteagg_db.csv', 'r') as csvfileR:
-	readerObject=csv.reader(csvfileR)
-	for row in readerObject:
-		if row==[]: continue
-		else:
-			all_votes.append(list(map(int, row)))
+    dataFile='total_vote_count.csv'
+    def csvWriter(data, filename):
+        with open(filename, 'a') as csvfileW:
+            writerObject=csv.writer(csvfileW)
+            writerObject.writerow(data)
 
-#print (all_votes)
-def voteCountOthers(filename):
-	with open(filename, 'r') as csvfileR:
-		readerObject=csv.reader(csvfileR)
-		i=-1
-		for row in readerObject:
-			if row==[]: continue
-			else:
-				i+=1
-				#print (all_votes[i], row)
-				all_votes[i]=list(map(add, all_votes[i], list(map(int,row))))
+    all_votes=[]
+    with open('../../client-01/data/voteagg_db.csv', 'r') as csvfileR:
+    	readerObject=csv.reader(csvfileR)
+    	for row in readerObject:
+    		if row==[]: continue
+    		else:
+    			all_votes.append(list(map(int, row)))
 
-#print ("next func works")
-voteCountOthers('../../client-02/data/voteagg_db.csv')
-voteCountOthers('../../client-03/data/voteagg_db.csv')
-voteCountOthers('../../client-04/data/voteagg_db.csv')
-voteCountOthers('../../client-05/data/voteagg_db.csv')
+    #print (all_votes)
+    def voteCountOthers(filename):
+    	with open(filename, 'r') as csvfileR:
+    		readerObject=csv.reader(csvfileR)
+    		i=-1
+    		for row in readerObject:
+    			if row==[]: continue
+    			else:
+    				i+=1
+    				#print (all_votes[i], row)
+    				all_votes[i]=list(map(add, all_votes[i], list(map(int,row))))
 
-for post in all_votes:
-	if post==[]: continue
-	else:
-		csvWriter(post, dataFile)
+    #print ("next func works")
+    voteCountOthers('../../client-02/data/voteagg_db.csv')
+    voteCountOthers('../../client-03/data/voteagg_db.csv')
+    voteCountOthers('../../client-04/data/voteagg_db.csv')
+    voteCountOthers('../../client-05/data/voteagg_db.csv')
+
+    for post in all_votes:
+    	if post==[]: continue
+    	else:
+    		csvWriter(post, dataFile)
+
+    time.sleep(5)

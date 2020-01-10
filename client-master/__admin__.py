@@ -226,27 +226,30 @@ def simpleDashData():
         for row in csvReader:
             if row==[]: continue
             i+=1
-            high = max(row)
-            ind = row.index(high)
+            cacheRow = []
+            for item in row:
+                cacheRow.append(int(item))
+            high = max(cacheRow)
+            ind = row.index(str(high))
             if i == 1:
-                post = "SPL_B"
+                post = "School Pupil Leader"
                 SPL_B_VOTE = high
                 if ind == 0: SPL_B = "Sameer"
-                if ind == 1: SPL_B = "Nikhil"
-                if ind == 2: SPL_B = "Yash"
-            elif i == 2: 
+                elif ind == 1: SPL_B = "Nikhil"
+                elif ind == 2: SPL_B = "Yash"
+            elif i == 2:
                 post = "SPL_G"
                 SPL_G_VOTE = high
                 if ind == 0: SPL_G = "Sanjana"
                 if ind == 1: SPL_G = "Parvani"
                 if ind == 2: SPL_G = "Bhavana"
-            elif i == 3: 
+            elif i == 3:
                 post = "CS_B"
                 CS_B_VOTE = high
                 if ind == 0: CS_B = "Afzal"
                 if ind == 1: CS_B = "Srinidhih"
                 if ind == 2: CS_B = "Sai Adhitya"
-            elif i == 4: 
+            elif i == 4:
                 post = "CS_G"
                 CS_G_VOTE = high
                 if ind == 0: CS_G = "Kanimita"
@@ -254,41 +257,96 @@ def simpleDashData():
                 if ind == 2: CS_G = "Manasa"
                 if ind == 3: CS_G = "Praneetha"
                 if ind == 4: CS_G = "Aishwarya"
-            elif i == 5: 
+            elif i == 5:
                 post = "SS_B"
                 SS_B_VOTE = high
                 if ind == 0: SS_B = "Alfred"
                 if ind == 1: SS_B = "Akhilesh"
                 if ind == 2: SS_B = "Anantha"
-            elif i == 6: 
+            elif i == 6:
                 post = "SS_G"
                 SS_G_VOTE = high
                 if ind == 0: SS_G = "Varshaa"
                 if ind == 1: SS_G = "Neha"
-            elif i == 7: 
+            elif i == 7:
                 post = "ASPL_B"
                 ASPL_B_VOTE = high
                 if ind == 0: ASPL_B = "Dheeraj"
                 if ind == 1: ASPL_B = "Thiru Kathir"
                 if ind == 2: ASPL_B = "Shanthanu"
-            elif i == 8: 
+            #CHANGE
+            elif i == 8:
                 post = "ASPL_G"
-                SPL_G_VOTE = high
+                ASPL_G_VOTE = high
                 if ind == 0: ASPL_G = "S Riya"
                 if ind == 1: ASPL_G = "Aparna R"
                 if ind == 2: ASPL_G = "Harshini Vijayan"
                 if ind == 3: ASPL_G = "Neha Yuvaraj"
                 if ind == 4: ASPL_G = "Smriti Maheshwari"
-            elif i == 9: 
+            elif i == 9:
                 post = "ACS_B"
-            elif i == 10: post = "ACS_G"
-            elif i == 11: post = "ASS_B"
-            elif i == 12: post = "ASS_G"
-            elif i == 13: post = "IN_PRES"
-            elif i == 14: post = "IN_VPRES"
-            elif i == 15: post = "IN_SEC"
-            elif i == 16: post = "IN_TRES"
-    return render_template('admin/simple_dash.html', SPL_B=SPL_B, SPL_B_VOTE=SPL_B_VOTE)
+                ACS_B_VOTE = high
+                if ind == 0: ACS_B = "Sankruth Sharma"
+                if ind == 1: ACS_B = "Saathvik B"
+                if ind == 2: ACS_B = "Harikrishnaa"
+            elif i == 10:
+                post = "ACS_G"
+                ACS_G_VOTE = high
+                if ind == 0: ACS_G = "Srinidhi B"
+                if ind == 1: ACS_G = "Aishwarya Ramachandra"
+                if ind == 2: ACS_G = "Dharshini SS"
+                if ind == 3: ACS_G = "Advika RA"
+            elif i == 11:
+                post = "ASS_B"
+                ASS_B_VOTE = high
+                if ind == 0: ASS_B = "Hari Shankar VS"
+                if ind == 1: ASS_B = "Balaji Ravi"
+                if ind == 2: ASS_B = "Dheexshan"
+                if ind == 3: ASS_B = "Annirudh RA"
+            elif i == 12:
+                post = "ASS_G"
+                ASS_G_VOTE = high
+                if ind == 0: ASS_G = "Anika Pandey"
+                if ind == 1: ASS_G = "Shamita"
+                if ind == 2: ASS_G = "Akshara NK"
+                if ind == 3: ASS_G = "Yuvashree Magesh"
+            elif i == 13:
+                post = "IN_PRES"
+                IN_PRES_VOTE = high
+                if ind == 0: IN_PRES = "Harshita Balaji"
+                if ind == 1: IN_PRES = "Shivani SI"
+                if ind == 2: IN_PRES = "Srirangan S"
+            elif i == 14:
+                post = "IN_VPRES"
+                IN_VPRES_VOTE = high
+                if ind == 0: IN_VPRES = "Nethra"
+                if ind == 1: IN_VPRES = "Tarun"
+            elif i == 15:
+                post = "IN_SEC"
+                IN_SEC_VOTE = high
+                if ind == 0: IN_SEC = "Sibi Rassal"
+                if ind == 1: IN_SEC = "Pranav S"
+            elif i == 16:
+                post = "IN_TRES"
+                IN_TRES_VOTE = high
+                if ind == 0: IN_TRES = "Bharat Rajesh"
+                if ind == 1: IN_TRES = "S Vishal"
+    return render_template('admin/simple_dash.html', SPL_B=SPL_B, SPL_B_VOTE=SPL_B_VOTE,
+                                                     SPL_G=SPL_G, SPL_G_VOTE=SPL_G_VOTE,
+                                                     CS_G=CS_G, CS_G_VOTE=CS_G_VOTE,
+                                                     CS_B=CS_B, CS_B_VOTE=CS_B_VOTE,
+                                                     SS_B=SS_B, SS_B_VOTE=SS_B_VOTE,
+                                                     SS_G=SS_G, SS_G_VOTE=SS_G_VOTE,
+                                                     ASPL_B=SPL_B, ASPL_B_VOTE=SPL_B_VOTE,
+                                                     ASPL_G=SPL_G, ASPL_G_VOTE=SPL_G_VOTE,
+                                                     ACS_G=CS_G, ACS_G_VOTE=CS_G_VOTE,
+                                                     ACS_B=CS_B, ACS_B_VOTE=CS_B_VOTE,
+                                                     ASS_B=SS_B, ASS_B_VOTE=SS_B_VOTE,
+                                                     ASS_G=SS_G, ASS_G_VOTE=SS_G_VOTE,
+                                                     IN_PRES=IN_PRES, IN_PRES_VOTE=IN_PRES_VOTE,
+                                                     IN_VPRES=IN_VPRES, IN_VPRES_VOTE=IN_VPRES_VOTE,
+                                                     IN_SEC=IN_SEC, IN_SEC_VOTE=IN_SEC_VOTE,
+                                                     IN_TRES=IN_TRES, IN_TRES_VOTE=IN_TRES_VOTE)
 
 #app_init
 if __name__ == '__main__':
